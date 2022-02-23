@@ -1,0 +1,419 @@
+﻿<Window
+    x:Class="AviUtlExoEditor.LabelCut.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
+    xmlns:v="clr-namespace:AviUtlExoEditor.LabelCut.Views"
+    xmlns:vm="clr-namespace:AviUtlExoEditor.LabelCut.ViewModels"
+    xmlns:m_i="clr-namespace:AviUtlExoEditor.LabelCut.Models.Item"
+    xmlns:m_f="clr-namespace:AviUtlExoEditor.LabelCut.Models.Item.Filter"
+    Title="LabelCut"
+    Width="1280"
+    Height="720"
+    MinWidth="800"
+    MinHeight="600">
+
+    <Window.DataContext>
+        <vm:MainWindowViewModel />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+        </Style>
+        
+        <DataTemplate DataType="{x:Type m_i:ObjectItem}">
+            <Border Margin="5"
+                    BorderThickness="1"
+                    BorderBrush="Gray">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Start"/>
+                    <TextBlock Grid.Column="1"
+                               Text="{Binding Start}"/>
+                    <TextBlock Grid.Column="2"
+                               Text="End"/>
+                    <TextBlock Grid.Column="3"
+                               Text="{Binding End}"/>
+                    <TextBlock Grid.Row="1"
+                               Text="Layer"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1"
+                               Text="{Binding Layer}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="2"
+                               Text="Overlay"/>
+                    <TextBlock Grid.Row="1" Grid.Column="3"
+                               Text="{Binding Overlay}"/>
+                    <TextBlock Grid.Row="2"
+                               Text="Audio"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1"
+                               Text="{Binding Audio}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="2"
+                               Text="Camera"/>
+                    <TextBlock Grid.Row="2" Grid.Column="3"
+                               Text="{Binding Camera}"/>
+                    <Expander Grid.Row="3" Grid.ColumnSpan="3">
+                        <ItemsControl ItemsSource="{Binding Filters}"/>
+                    </Expander>
+                </Grid>
+            </Border>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type m_f:AudioFile}">
+            <Border Margin="5"
+                    BorderThickness="1"
+                    BorderBrush="Red">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Name"/>
+                    <TextBlock Grid.Column="1" Grid.ColumnSpan="3"
+                               Text="{Binding Name}"/>
+                    <TextBlock Grid.Row="1"
+                               Text="Position"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1"
+                               Text="{Binding Position}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="2"
+                               Text="Speed"/>
+                    <TextBlock Grid.Row="1" Grid.Column="3"
+                               Text="{Binding Speed}"/>
+                    <TextBlock Grid.Row="2"
+                               Text="Loop"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1"
+                               Text="{Binding Loop}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="2"
+                               Text="Alignment"/>
+                    <TextBlock Grid.Row="2" Grid.Column="3"
+                               Text="{Binding Alignment}"/>
+                    <TextBlock Grid.Row="3"
+                               Text="File"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"
+                               Text="{Binding File}"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type m_f:MovieFile}">
+            <Border Margin="5"
+                    BorderThickness="1"
+                    BorderBrush="Blue">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Name"/>
+                    <TextBlock Grid.Column="1" Grid.ColumnSpan="3"
+                               Text="{Binding Name}"/>
+                    <TextBlock Grid.Row="1"
+                               Text="Position"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1"
+                               Text="{Binding Position}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="2"
+                               Text="Speed"/>
+                    <TextBlock Grid.Row="1" Grid.Column="3"
+                               Text="{Binding Speed}"/>
+                    <TextBlock Grid.Row="2"
+                               Text="Loop"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1"
+                               Text="{Binding Loop}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="2"
+                               Text="Alpha"/>
+                    <TextBlock Grid.Row="2" Grid.Column="3"
+                               Text="{Binding Alpha}"/>
+                    <TextBlock Grid.Row="3"
+                               Text="File"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"
+                               Text="{Binding File}"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type m_f:DefaultDraw}">
+            <Border Margin="5"
+                    BorderThickness="1"
+                    BorderBrush="Cyan">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Name"/>
+                    <TextBlock Grid.Column="1" Grid.ColumnSpan="3"
+                               Text="{Binding Name}"/>
+                    <TextBlock Grid.Row="1"
+                               Text="X"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1"
+                               Text="{Binding X}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="2"
+                               Text="Y"/>
+                    <TextBlock Grid.Row="1" Grid.Column="3"
+                               Text="{Binding Y}"/>
+                    <TextBlock Grid.Row="2"
+                               Text="Z"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1"
+                               Text="{Binding Z}"/>
+                    <TextBlock Grid.Row="3"
+                               Text="Zoon"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1"
+                               Text="{Binding Zoom}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="2"
+                               Text="Alpha"/>
+                    <TextBlock Grid.Row="3" Grid.Column="3"
+                               Text="{Binding Alpha}"/>
+                    <TextBlock Grid.Row="4"
+                               Text="Rotate"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1"
+                               Text="{Binding Rotate}"/>
+                    <TextBlock Grid.Row="4" Grid.Column="2"
+                               Text="Blend"/>
+                    <TextBlock Grid.Row="4" Grid.Column="3"
+                               Text="{Binding Blend}"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type m_f:DefaultPlay}">
+            <Border Margin="5"
+                    BorderThickness="1"
+                    BorderBrush="Pink">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Name"/>
+                    <TextBlock Grid.Column="1" Grid.ColumnSpan="3"
+                               Text="{Binding Name}"/>
+                    <TextBlock Grid.Row="1"
+                               Text="Volume"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1"
+                               Text="{Binding Volume}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="2"
+                               Text="Pan"/>
+                    <TextBlock Grid.Row="1" Grid.Column="3"
+                               Text="{Binding Pan}"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </Window.Resources>
+
+    <behaviors:Interaction.Triggers>
+
+        <behaviors:EventTrigger EventName="Closed">
+            <l:DataContextDisposeAction />
+        </behaviors:EventTrigger>
+
+        <l:InteractionMessageTrigger Messenger="{Binding Messenger}" MessageKey="SaveAs">
+            <l:SaveFileDialogInteractionMessageAction/>
+        </l:InteractionMessageTrigger>
+        
+    </behaviors:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Border>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="5"
+                           Text="Exoファイルパス"/>
+                <TextBox Grid.Column="1"
+                         Text="{Binding ExoFile, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Grid.Column="2"
+                        Command="{Binding LoadExoCommand}">
+                    <TextBlock Margin="5"
+                               Text="読み込み"/>
+                </Button>
+            </Grid>
+        </Border>
+        <Border Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="5"
+                           Text="ラベルファイルパス"/>
+                <TextBox Grid.Column="1"
+                         Text="{Binding LabelFile, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Grid.Column="2"
+                        Command="{Binding LoadLabelCommand}">
+                    <TextBlock Margin="5"
+                               Text="読み込み"/>
+                </Button>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Width"/>
+                    <TextBlock Grid.Column="1"
+                               Text="{Binding OrgExoItem.Width}"/>
+                    <TextBlock Grid.Column="2"
+                               Text="Height"/>
+                    <TextBlock Grid.Column="3"
+                               Text="{Binding OrgExoItem.Height}"/>
+                    <TextBlock Grid.Row="1"
+                               Text="Rate"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1"
+                               Text="{Binding OrgExoItem.Rate}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="2"
+                               Text="Scale"/>
+                    <TextBlock Grid.Row="1" Grid.Column="3"
+                               Text="{Binding OrgExoItem.Scale}"/>
+                    <TextBlock Grid.Row="2" Grid.ColumnSpan="2"
+                               Text="Length"/>
+                    <TextBlock Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
+                               Text="{Binding OrgExoItem.Length}"/>
+                    <TextBlock Grid.Row="3" Grid.ColumnSpan="2"
+                               Text="AudioRate"/>
+                    <TextBlock Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
+                               Text="{Binding OrgExoItem.AudioRate}"/>
+                    <TextBlock Grid.Row="4" Grid.ColumnSpan="2"
+                               Text="AudioChannel"/>
+                    <TextBlock Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
+                               Text="{Binding OrgExoItem.AudioChannel}"/>
+                    <ScrollViewer Grid.Row="5" Grid.ColumnSpan="4">
+                        <ItemsControl ItemsSource="{Binding OrgExoItem.ObjectItems}"/>
+                    </ScrollViewer>
+                </Grid>
+            </Border>
+            <Border Grid.Column="1">
+                <DataGrid ItemsSource="{Binding LabelItems}"
+                          IsReadOnly="True"/>
+            </Border>
+            <Border Grid.Column="2">
+                <Button Grid.Column="2"
+                        Width="100"
+                        Height="50"
+                        Content="変換"
+                        Command="{Binding ConvertCommand}"/>
+            </Border>
+            <Border Grid.Column="3">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Width"/>
+                    <TextBlock Grid.Column="1"
+                               Text="{Binding NewExoItem.Width}"/>
+                    <TextBlock Grid.Column="2"
+                               Text="Height"/>
+                    <TextBlock Grid.Column="3"
+                               Text="{Binding NewExoItem.Height}"/>
+                    <TextBlock Grid.Row="1"
+                               Text="Rate"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1"
+                               Text="{Binding NewExoItem.Rate}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="2"
+                               Text="Scale"/>
+                    <TextBlock Grid.Row="1" Grid.Column="3"
+                               Text="{Binding NewExoItem.Scale}"/>
+                    <TextBlock Grid.Row="2" Grid.ColumnSpan="2"
+                               Text="Length"/>
+                    <TextBlock Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
+                               Text="{Binding NewExoItem.Length}"/>
+                    <TextBlock Grid.Row="3" Grid.ColumnSpan="2"
+                               Text="AudioRate"/>
+                    <TextBlock Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
+                               Text="{Binding NewExoItem.AudioRate}"/>
+                    <TextBlock Grid.Row="4" Grid.ColumnSpan="2"
+                               Text="AudioChannel"/>
+                    <TextBlock Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
+                               Text="{Binding NewExoItem.AudioChannel}"/>
+                    <ScrollViewer Grid.Row="5" Grid.ColumnSpan="4">
+                        <ItemsControl ItemsSource="{Binding NewExoItem.ObjectItems}"/>
+                    </ScrollViewer>
+                </Grid>
+            </Border>
+        </Grid>
+        <Button Grid.Row="3"
+                Content="保存"
+                Command="{Binding SaveCommand}"/>
+    </Grid>
+</Window>
