@@ -1,0 +1,2 @@
+# AviUtlExoEditor.LabelCut
+AviUtlの拡張編集エクスポートファイルを、Audacityのラベルファイルに基づいて編集するツールです。
