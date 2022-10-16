@@ -3,8 +3,7 @@
 AviUtl の拡張編集エクスポートファイルを、Audacity のラベルファイルに基づいて編集するツールです。
 
 ## 解説動画
-
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/IaQ_K2oG67U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![AviUtlとAudacityを組み合わせて自動編集するツールを作りました](http://img.youtube.com/vi/IaQ_K2oG67U/0.jpg)](http://www.youtube.com/watch?v=IaQ_K2oG67U)
 
 ## 使い方
 
